@@ -12,12 +12,6 @@ public class doorOpen : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider other)
     {
         anim.SetTrigger("Door Open");
