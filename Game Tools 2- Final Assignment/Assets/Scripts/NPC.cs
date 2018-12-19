@@ -17,8 +17,7 @@ public class NPC : MonoBehaviour {
     [SerializeField] float m_ThresholdDistance;
     [SerializeField] private Transform[] m_Waypoints;
     [SerializeField] GameObject m_Player;
-
-	// Use this for initialization
+    
 	void Start () {
 
         m_NPCState = NPCState.PATROL;
@@ -31,8 +30,7 @@ public class NPC : MonoBehaviour {
 
         HandleAnimation();
     }
-	
-	// Update is called once per frame
+	    
 	void Update () {
         CheckPlayer();
         m_NavMeshAgent.nextPosition = transform.position;

@@ -31,13 +31,12 @@ public class Footprint : MonoBehaviour {
         Debug.Log("Footprint");
 
         Direction footDirection;
-
-        if (scale > 0) // left foot
+        
         {
             footDirection = Direction.left;
             Instantiate(m_footprint, m_leftFootTransform.position, m_leftFootTransform.rotation);
         }
-        else // right foot
+
         {
             footDirection = Direction.right;
             Instantiate(m_footprint, m_rightFootTransform.position, m_rightFootTransform.rotation);

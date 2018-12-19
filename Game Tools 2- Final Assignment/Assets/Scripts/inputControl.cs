@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserControl : MonoBehaviour {
+public class inputControl : MonoBehaviour {
 
     private float m_turn;
     private float m_forward;
@@ -16,11 +16,11 @@ public class UserControl : MonoBehaviour {
 
 
 
-    private Character m_character;
+    private characterController m_character;
 
     private void Start()
     {
-        m_character = GetComponent<Character>();
+        m_character = GetComponent<characterController>();
     }
     // Use this for initialization
 
@@ -30,7 +30,7 @@ public class UserControl : MonoBehaviour {
         m_turn = Input.GetAxis("Horizontal");
         m_forward = Input.GetAxis("Vertical");
         m_jump = Input.GetButtonDown("Jump");
-        m_pick = Input.GetKeyDown(KeyCode.C);
+        m_pick = Input.GetKeyDown(KeyCode.E);
 
         m_aimDown = Input.GetMouseButtonDown(1);
         m_aimHold = Input.GetMouseButton(1);

@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Character : MonoBehaviour
+public class characterController : MonoBehaviour
 {
     private float deltaX;
     private Quaternion spineRotation;
@@ -19,13 +19,13 @@ public class Character : MonoBehaviour
     private float m_weightIK;
     private Vector3 m_positionIK;
 
+    public int ughCount;
 
 
 
-    // Use this for initialization
+
     void Start()
     {
-        // Initialize Animator
         m_animator = GetComponent<Animator>();
     }
 
@@ -48,17 +48,15 @@ public class Character : MonoBehaviour
         if (other.name=="Pickable") {
             var pickable = other.GetComponent<Pickable>();
 
-            //Debug.Log("PickingTrigger");
-            //Debug.Log(pickable.picked);
-
             if (m_picked && pickable != null && !pickable.picked)
             {
-                // do something
                 Transform rightHand = m_animator.GetBoneTransform(HumanBodyBones.RightHand);
                 pickable.BePicked(rightHand);
 
                 m_animator.SetTrigger("Pick");
-                StartCoroutine(UpdateIK(other));// Start corroutine to update position and weight
+                StartCoroutine(UpdateIK(other));
+
+                ughCount++;
             }
         }
     }
@@ -94,8 +92,7 @@ public class Character : MonoBehaviour
         {
             Quaternion rotationOff = Quaternion.Euler(0, deltaX * 10, 0);
             spineRotation = Quaternion.Lerp(spineRotation, spineRotation * rotationOff, Time.deltaTime * 50);
-
-            //Clamp vector
+            
             Vector3 spineRotationEuler = spineRotation.eulerAngles;
             if (spineRotationEuler.y > 180) spineRotationEuler.y = spineRotationEuler.y - 360;
             else if (spineRotationEuler.y < -180) spineRotationEuler.y = spineRotationEuler.y + 360;
@@ -113,7 +110,7 @@ public class Character : MonoBehaviour
         m_animator.SetBool("Aim", aimHold);
 
 
-        if (aimDown) // Get spine rotation only on first frame
+        if (aimDown) 
         {
             spineRotation = m_animator.GetBoneTransform(HumanBodyBones.Spine).localRotation;
         }
