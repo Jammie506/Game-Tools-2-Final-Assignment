@@ -106,7 +106,6 @@ public class NPC : MonoBehaviour {
 
     void Patrol()
     {
-        //Debug.Log("Patrolling");
 
         CheckWaypointDistance();
         m_NavMeshAgent.SetDestination(m_Waypoints[m_CurrentWaypoint].position);
@@ -148,7 +147,7 @@ public class NPC : MonoBehaviour {
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, 5.0f);
+        Gizmos.DrawWireSphere(transform.position, 30.0f);
 
         Gizmos.color = Color.red;
         Vector3 direction = m_Player.transform.position - transform.position;
